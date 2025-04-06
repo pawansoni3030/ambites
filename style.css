@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Section Styling */
 .section_block {
   overflow: hidden; /* Keep if needed for animations/layout */
-  padding: 80px 0; /* Use vertical padding, horizontal handled by container */
+  padding: 30px 0; /* Use vertical padding, horizontal handled by container */
 }
 
 /* Background Variants */
