@@ -1,0 +1,386 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Tilt+Neon&display=swap");
+
+/* Custom CSS Properties */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box; /* Bootstrap includes this */
+  /* Reset padding/margin carefully - Bootstrap adds its own */
+}
+
+body {
+    background: rgb(67, 69, 112);
+    background: radial-gradient(
+      circle,
+      rgba(67, 69, 112, 1) 3%,
+      rgba(35, 36, 57, 1) 60%
+    );
+    font-family: "Tilt Neon", sans-serif; /* Apply base font */
+    color: #eee; /* Default text color for sections */
+    padding-top: 70px; /* Add padding to body to offset fixed navbar */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* General Typography & Links */
+a {
+    text-decoration: none;
+    color: rgb(117, 152, 242); /* Example link color */
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Tilt Neon", sans-serif;
+    color: #fff; /* Heading color */
+}
+
+/* Section Styling */
+.section_block {
+  overflow: hidden; /* Keep if needed for animations/layout */
+  padding: 80px 0; /* Use vertical padding, horizontal handled by container */
+}
+
+/* Background Variants */
+.bg-gray {
+    background: rgba(35, 36, 57, 0.8); /* Slightly different background for contrast */
+}
+
+/* Description block within sections */
+.description {
+  color: #fff;
+  /* padding: 0 50px; Removed - use Bootstrap container/cols */
+}
+
+.description h1.title { /* Target specific h1 */
+  font-size: clamp(2.5rem, 5vw, 3.5rem); /* Slightly adjusted */
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+.gradient-text {
+  font-family: "Tilt Neon", sans-serif;
+  background-image: linear-gradient(
+    90deg,
+    rgb(118, 167, 63) 0%,
+    rgb(51, 143, 118) 40%,
+    rgb(55, 141, 167) 50%,
+    rgb(117, 152, 242) 70%,
+    rgb(144, 118, 236) 100%
+  );
+  color: transparent;
+  background-size: contain;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.description p.paragraph { /* Target specific p */
+  font-family: "Nunito", sans-serif; /* Use Nunito for paragraphs */
+  font-size: clamp(0.9rem, 2vw, 1.1rem); /* Adjusted */
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #ccc; /* Slightly dimmer paragraph color */
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+    background-color: transparent; /* Start transparent */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar.scrolled {
+    background: radial-gradient(
+      circle,
+      rgba(67, 69, 112, 1) 3%,
+      rgba(35, 36, 57, 1) 60%
+    );
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.navbar .navbar-brand.logo h1 {
+    font-weight: 700;
+    text-shadow: 2px 1px 0px #fff; /* Adjusted shadow */
+    line-height: 1;
+    margin: 0;
+    font-size: 1.8rem; /* Adjust size */
+    color: white; /* Ensure color */
+}
+.navbar .navbar-brand.logo h1 a { /* Target link inside */
+    color: inherit; /* Inherit color from h1 */
+    text-decoration: none;
+}
+
+
+.navbar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem; /* Adjust padding */
+    transition: color 0.3s ease;
+    position: relative;
+    margin: 0 0.3rem; /* Spacing between items */
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active { /* Style for active link */
+    color: #fff;
+}
+
+/* Optional: Add underline effect */
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0.8rem; /* Adjust based on padding */
+    right: 0.8rem;
+    height: 2px;
+    background-color: white;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: center;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* Navbar toggler icon color */
+.navbar-dark .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Mobile Menu Background (when collapsed) */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: rgba(35, 36, 57, 0.95); /* Darker background for mobile menu */
+        padding: 1rem;
+        margin-top: 0.5rem;
+        border-radius: 5px;
+    }
+     .navbar .nav-link {
+        padding: 0.8rem 1rem; /* More vertical space on mobile */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .navbar .nav-item:last-child .nav-link {
+        border-bottom: none;
+    }
+     .navbar .nav-link::after { /* Disable underline on mobile */
+        display: none;
+     }
+}
+
+/* --- Home Section Specifics --- */
+.users-color-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: repeat(3, 1fr); We might not need fixed rows */
+  gap: 15px; /* Reduced gap */
+}
+
+.item {
+  width: 100%;
+  pointer-events: none;
+  user-select: none;
+  /* max-width: 200px; Removed - let grid/col control size */
+  aspect-ratio: 1/1;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5),
+    inset 0px 2px 2px rgba(255, 255, 255, 0.2);
+  animation: fadeIn 0.5s linear 1 forwards;
+  animation-delay: calc(0.2s * var(--i));
+  opacity: 0;
+}
+
+/* Item specific styles (keep as is) */
+.item:nth-child(1) { background-color: #67d7e1; border-radius: 50% 50% 0 50%; }
+.item:nth-child(2) { border-radius: 50% 50% 0 0; } /* Assuming it's an image */
+.item:nth-child(3) { background-color: #6cc164; border-radius: 50%; }
+.item:nth-child(4) { border-radius: 0 0 0 50%; } /* Assuming it's an image */
+.item:nth-child(5) { border-radius: 0 50% 50% 0; } /* Assuming it's an image */
+.item:nth-child(6) { background-color: #8071a8; border-radius: 0 50% 50% 50%; }
+.item:nth-child(7) { border-radius: 50% 50% 0 50%; } /* Assuming it's an image */
+.item:nth-child(8) { background-color: #fe7519; border-radius: 50% 0 0 50%; }
+.item:nth-child(9) { background-color: #f5bec3; border-radius: 0 50% 50% 0; }
+.item:nth-child(10) { border-radius: 50%; } /* Assuming it's an image */
+.item:nth-child(11) { background-color: #fcd659; border-radius: 50% 0 50% 50%; }
+.item:nth-child(12) { border-radius: 50% 0 0 0; } /* Assuming it's an image */
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* --- Button Styling --- */
+.custom-btn { /* Renamed from .btn to avoid Bootstrap conflict */
+  display: inline-flex; /* Use inline-flex */
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  max-width: max-content;
+  background: linear-gradient(
+    90deg,
+    rgb(118, 167, 63) 0%,
+    rgb(51, 143, 118) 40%,
+    rgb(55, 141, 167) 50%,
+    rgb(117, 152, 242) 70%,
+    rgb(144, 118, 236) 100%
+  );
+  background-size: 200%;
+  background-position: left;
+  color: #fff !important; /* Ensure text color is white */
+  font-size: 1.1rem; /* Adjusted size */
+  font-weight: 500;
+  border: 0;
+  padding: 12px 20px; /* Adjusted padding */
+  border-radius: 5px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5),
+    inset 0px 2px 2px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  text-decoration: none; /* Remove underline from link buttons */
+}
+
+.custom-btn:hover {
+  background-position: right;
+  color: #fff; /* Keep color on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6),
+    inset 0px 2px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* --- Form Styling --- */
+/* Use Bootstrap classes (.form-control, .form-label), add custom overrides */
+.custom-input, /* Target both input and textarea */
+.custom-input:focus {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.9); /* Brighter text */
+    border-radius: 0; /* Remove Bootstrap radius */
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 500;
+    box-shadow: none; /* Remove Bootstrap focus shadow */
+    transition: border-color 0.3s ease-in;
+}
+.custom-input:focus {
+    border-bottom-color: rgb(117, 152, 242);
+}
+
+/* Placeholder styling */
+.custom-input::placeholder {
+  color: rgb(117, 152, 242);
+  opacity: 0.6; /* Adjust opacity */
+  font-weight: 500;
+}
+
+/* Label Styling */
+.form-label {
+    /* display: inline-block; */ /* Handled by Bootstrap */
+    /* max-width: 100%; */
+    margin-bottom: 5px;
+    font-size: 1rem; /* Adjusted size */
+    text-transform: uppercase;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Specific overrides for Bootstrap form validation */
+.was-validated .form-control:invalid, .form-control.is-invalid {
+    border-color: #dc3545; /* Bootstrap's danger color */
+    background-image: none; /* Hide default Bootstrap icon if needed */
+}
+.was-validated .form-control:valid, .form-control.is-valid {
+     border-color: #198754; /* Bootstrap's success color */
+     background-image: none;
+}
+.invalid-feedback {
+    color: #dc3545;
+}
+
+
+/* --- Services Section --- */
+.services-list i {
+    color: rgb(118, 167, 63); /* Icon color */
+}
+
+/* "What We Offer" items */
+.service_item {
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle background */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service_item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.service_item i {
+    color: rgb(117, 152, 242); /* Icon color */
+}
+.service_item h4 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+.service_item p {
+    font-size: 0.95rem;
+    color: #bbb;
+}
+
+
+/* --- Portfolio Section --- */
+.portfolio-item {
+    text-align: center;
+}
+.portfolio-item img {
+    margin-bottom: 15px; /* Spacing below image */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.portfolio-item h3 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+.portfolio-item p {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-bottom: 10px;
+}
+.portfolio-item .btn-outline-light { /* Style portfolio button */
+    border-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.7);
+}
+.portfolio-item .btn-outline-light:hover {
+     border-color: #fff;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Footer --- */
+footer a:hover {
+    color: #fff;
+}
+
+/* Remove original specific layout/responsive rules previously handled by media queries */
+/* e.g., .home grid changes, .nav display toggles, .navmobile styles, .column flex-basis changes, etc. */
+
+/* Keep any other specific custom styles not covered by Bootstrap */
+.skills-list li {
+    margin-bottom: 8px;
+    color: #ccc;
+}
+.skills-list i {
+    color: rgb(51, 143, 118); /* Checkmark color */
+}
