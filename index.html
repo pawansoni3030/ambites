@@ -348,6 +348,23 @@
                 navbar.classList.remove('scrolled');
             }
         });
+        document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('#navbarResponsive .nav-link');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+
+        navLinks.forEach(navLink => {
+            navLink.addEventListener('click', () => {
+                if (window.getComputedStyle(navbarCollapse).display !== 'none') {
+                    // If the navbar is currently expanded (not 'none' on smaller screens)
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                        if (navbarToggler && window.getComputedStyle(navbarToggler).display !== 'none') {
+                        // If the toggler button is visible (meaning we're on a smaller screen)
+                        navbarToggler.click(); // Simulate a click on the toggler to collapse the menu
+                        }
+                    }
+                });
+            });
+        });
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
                 // --- EmailJS Form Submission ---
