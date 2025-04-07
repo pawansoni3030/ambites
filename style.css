@@ -194,7 +194,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .item {
-  width: 100%;
+  width: 100px;
   pointer-events: none;
   user-select: none;
   /* max-width: 200px; Removed - let grid/col control size */
@@ -202,7 +202,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5),
     inset 0px 2px 2px rgba(255, 255, 255, 0.2);
   animation: fadeIn 0.5s linear 1 forwards;
-  animation-delay: calc(0.2s * var(--i));
+  animation-delay: calc(0.1s * var(--i));
   opacity: 0;
 }
 
@@ -266,6 +266,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Use Bootstrap classes (.form-control, .form-label), add custom overrides */
 .custom-input, /* Target both input and textarea */
 .custom-input:focus {
+    width: 100%; /* Ensure inputs take full width */
     background-color: transparent;
     border: 0;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
@@ -278,6 +279,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: border-color 0.3s ease-in;
 }
 .custom-input:focus {
+    outline: none;
     border-bottom-color: rgb(117, 152, 242);
 }
 
@@ -383,4 +385,10 @@ footer a:hover {
 }
 .skills-list i {
     color: rgb(51, 143, 118); /* Checkmark color */
+}
+
+/* Required field indicator styling */
+.required-indicator {
+    color: #ff8a80; /* Brighter color for dark background */
+    margin-left: 3px;
 }
