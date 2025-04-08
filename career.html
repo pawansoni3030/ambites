@@ -13,6 +13,8 @@
     body {
       display: flex;
       justify-content: center;
+      flex-direction: column;
+      align-items: center;
       padding: 10px;
     }
 
@@ -111,6 +113,17 @@
       <button class="btn btn-lg custom-btn" type="submit">Apply Now</button>
     </form>
   </div>
+  <footer class="py-4 text-center text-white-50">
+    <div class="container">
+        <div class="footer-links mt-2 d-flex flex-wrap justify-content-center gap-3">
+             <a href="terms-and-conditions.html" class="text-white-50 small">Terms & Conditions</a>
+             <a href="#privacy" class="text-white-50 small">Privacy Policy</a>
+             <a href="career.html" class="text-white-50 small">Careers</a>
+        </div>
+        <br>
+        <p class="mb-2">Copyright &copy; Ambites <span id="year"></span></p>
+        </div>
+</footer>
   <script>
 
     function postToGoogle() {
