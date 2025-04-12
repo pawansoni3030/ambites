@@ -180,9 +180,13 @@ h1, h2, h3, h4, h5, h6 {
     .navbar .nav-item:last-child .nav-link {
         border-bottom: none;
     }
-     .navbar .nav-link::after { /* Disable underline on mobile */
+    .navbar .nav-link::after { /* Disable underline on mobile */
         display: none;
-     }
+    }
+
+    .description p.paragraph {
+        text-align: justify;
+    }
 }
 
 /* --- Home Section Specifics --- */
