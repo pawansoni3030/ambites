@@ -185,7 +185,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .description p.paragraph {
-        text-align: justify;
+        text-align: justify !important;
     }
 }
 
